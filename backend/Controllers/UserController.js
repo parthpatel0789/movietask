@@ -10,9 +10,6 @@ async function userRegister(payloadData) {
         if (await Service.findOne(Model.Users, { email: payloadData.email })) {
             return Promise.reject(Config.APP_CONSTANTS.STATUS_MSG.ERROR.EMAIL_ALREADY_EXISTS);
         }
-        if (await Service.findOne(Model.Users, { mobile: payloadData.mobile })) {
-            return Promise.reject(Config.APP_CONSTANTS.STATUS_MSG.ERROR.PHONE_ALREADY_EXIST);
-        }
         const password = await UniversalFunctions.CryptData(payloadData.password)
         payloadData.password = password
         let user = await Service.saveData(Model.Users, payloadData)
