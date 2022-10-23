@@ -1,0 +1,87 @@
+<div id="main">
+    <div class="row">
+        <div class="col s12">
+            <div id="html-validations" class="card card-tabs">
+                <div class="card-content">
+                    <div class="card-title">
+                        <div class="row">
+                            <div class="col s12 m6 l10">
+                                <h4 class="card-title">Add Movie</h4>
+                            </div>
+                            <div class="col s12 m6 l2">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="html-view-validations">
+                        <form class="formValidate0" id="formValidate0" [formGroup]="registerForm">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input placeholder="Name" class="validate" required id="uname0" name="uname0"
+                                        type="text" formControlName="name" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                        <div *ngIf="f.name.errors.required">Name is required</div>
+                                    </div>
+                                </div>
+                                <div class="input-field col s12">
+                                    <ngx-input-star-rating formControlName="rating"></ngx-input-star-rating>
+                                    <div *ngIf="submitted && f.rating.errors" class="invalid-feedback">
+                                        <div *ngIf="f.rating.errors.required">Rating is required</div>
+                                    </div>
+                                </div>
+
+                                <div class="input-field col s12">
+                                    <div formArrayName="cast" class="form-group-comman hash-tags-field">
+                                        <div class="left-input-filed-adding">
+                                            <div *ngFor="let d of videoinputForms?.controls; let i=index"
+                                                [formGroupName]="i" class="new-add-input">
+                                                <input maxlength="26" formControlName="cast" type="text"
+                                                    placeholder="Cast">
+                                                <div *ngIf="submitted && f.cast.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.cast.errors.required">Cast is required</div>
+                                                </div>
+                                                <button (click)="deleteVideoRow(i)"
+                                                    class="btn waves-effect waves-light right">
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="right-btn-add">
+                                            <button (click)="addNewVideoRow()"
+                                                class="btn waves-effect waves-light left">
+                                                Add
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="input-field col s12">
+                                    <input placeholder="Genre" class="validate" required id="uname0" name="uname0"
+                                        type="text" formControlName="genre" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.genre.errors }">
+                                    <div *ngIf="submitted && f.genre.errors" class="invalid-feedback">
+                                        <div *ngIf="f.genre.errors.required">Genre is required</div>
+                                    </div>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input placeholder="Release Date" formControlName="releaseDate" type="date"
+                                        class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.releaseDate.errors }">
+                                    <div *ngIf="submitted && f.releaseDate.errors" class="invalid-feedback">
+                                        <div *ngIf="f.releaseDate.errors.required">select Date</div>
+                                    </div>
+                                </div>
+                                <div class="input-field col s12">
+                                    <button (click)="onSubmit()" class="btn waves-effect waves-light right"
+                                        type="submit" name="action">Submit
+                                        <i class="material-icons right">send</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

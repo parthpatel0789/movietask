@@ -1,0 +1,89 @@
+<div id="main">
+    <div class="row">
+        <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
+        <div class="breadcrumbs-dark custom-breadcrumbs-new pb-0 pt-4" id="breadcrumbs-wrapper">
+            <!-- Search for small screen-->
+            <div class="container">
+                <div class="row">
+                    <div class="col s10 m6 l6">
+                        <h5 class="breadcrumbs-title mt-0 mb-0"><span>DataTable</span></h5>
+                        <ol class="breadcrumbs mb-0">
+                            <li class="breadcrumb-item"><a>Home</a>
+                            </li>
+                            <li class="breadcrumb-item"><a routerLink="/dashboard">Dashboard</a>
+                            </li>
+                            <li class="breadcrumb-item active">Movie
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="col s2 m6 l6"><a routerLink="/add-movie"
+                            class="btn dropdown-settings waves-effect waves-light breadcrumbs-btn right"
+                            data-target="dropdown1"><i class="material-icons hide-on-med-and-up">settings</i><span
+                                class="hide-on-small-onl">add Movie</span></a>
+                        <ul class="dropdown-content" id="dropdown1" tabindex="0">
+                            <li tabindex="0"><a class="grey-text text-darken-2">Profile<span
+                                        class="new badge red">2</span></a></li>
+                            <li tabindex="0"><a class="grey-text text-darken-2">Contacts</a>
+                            </li>
+                            <li tabindex="0"><a class="grey-text text-darken-2">FAQ</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li tabindex="0"><a class="grey-text text-darken-2">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s12">
+            <div class="container">
+                <div class="section section-data-tables">
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div id="button-trigger" class="card card card-default scrollspy">
+                                <div class="card-content">
+                                    <h4 class="card-title">DataTables example</h4>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <table id="data-table-simple" class="display">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Rating</th>
+                                                        <th>Cast</th>
+                                                        <th>Genre</th>
+                                                        <th>Release Date</th>
+                                                        <th>Created At</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let data of movieList">
+                                                        <td>{{data.name}}</td>
+                                                        <td>{{data.rating}}</td>
+                                                        <td>{{data.cast}}</td>
+                                                        <td>{{data.genre}}</td>
+                                                        <td>{{data.releaseDate | date:'dd-MM-yy'}}</td>
+                                                        <td>{{data.createdAt | date:'dd-MM-yy'}}</td>
+                                                        <td><a (click)="editMovie(data)"><i style="cursor:pointer"
+                                                                    class="material-icons">edit</i></a>
+                                                            <a (click)="clickMethod(data)"><i style="cursor:pointer"
+                                                                    class="material-icons delete-mails">delete</i></a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <!-- <div style="float: right;">
+                                                <mat-paginator (page)="pageChange($event)" [length]="total"
+                                                    [pageSize]="10">
+                                                </mat-paginator>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-overlay"></div>
+            </div>
+        </div>
+    </div>
